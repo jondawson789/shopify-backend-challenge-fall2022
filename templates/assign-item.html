@@ -1,0 +1,15 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+<form action = "/item/{{item.id}}/assign" method = "POST">
+    <label>Choose a warehouse</label>
+    <select name = "warehouse">
+      {% for warehouse in warehouses %}
+        <option value = "{{warehouse.name}}">{{warehouse.name}}</option>
+      {% endfor %}
+    </select>
+  
+    <button>assign item</button>
+</form>
+
+{% endblock %}

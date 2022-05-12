@@ -1,0 +1,22 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+
+<h1>Item Details</h1>
+
+<h1>{{item.name}}</h1>
+<h2>Warehouse: {{item.warehouse}}</h2>
+<p>{{item.description}}</p>
+<form action="/item/{{item.id}}" method = "POST">
+    <input type="submit" value="delete item" />
+</form>
+
+<form action="/item/{{item.id}}/edit">
+    <input type="submit" value="edit item" />
+</form>
+
+<form action="/item/{{item.id}}/assign">
+    <input type="submit" value="assign to warehouse"/>
+</form>
+
+{% endblock %}

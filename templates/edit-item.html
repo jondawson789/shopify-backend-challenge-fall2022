@@ -1,0 +1,19 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+<form action = "/item/{{item.id}}/edit" method = "POST">
+    <label> item id
+        <input value = "{{item.id}}" name = "id">
+    </label>
+    <label> name
+        <input value = "{{item.name}}" name = "name">
+    </label>
+    <label> description
+        <input value = "{{item.description}}" name = "description">
+    </label>
+    <label>Choose a warehouse</label>
+
+    <button>edit item</button>
+</form>
+
+{% endblock %}

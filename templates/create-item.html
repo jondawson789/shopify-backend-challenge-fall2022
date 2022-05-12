@@ -1,0 +1,18 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+<form action = "/items" method = "POST">
+    <label> item id
+        <input name = "id">
+    </label>
+    <label> name
+        <input name = "name">
+    </label>
+    <label> description
+        <input name = "description">
+    </label>
+  
+    <button>create item</button>
+</form>
+
+{% endblock %}
