@@ -1,5 +1,6 @@
 from flask import Flask, redirect, render_template, request, flash
 from models import db, connect_db, Item, Warehouse
+import os
 
 
 app = Flask(__name__)
@@ -12,7 +13,7 @@ connect_db(app)
 db.drop_all()
 db.create_all()
 
-app.config['SECRET_KEY'] = "secret"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'shh')
 
 @app.route('/')
 def homepage():
