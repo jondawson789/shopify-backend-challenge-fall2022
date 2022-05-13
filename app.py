@@ -93,6 +93,8 @@ def assign_item(item_id):
         flash('no warehouse exists')
         return redirect(f'/item/{item_id}/assign')
 
+    return redirect(f'/item/{item_id}')
+
 @app.route('/create-warehouse')
 def warehouse_form():
     return render_template('create-warehouse.html')
