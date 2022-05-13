@@ -85,7 +85,7 @@ def assign_form(item_id):
 def assign_item(item_id):
     item = Item.query.get_or_404(item_id)
     try:
-        item.warehosue = request.form['warehouse']
+        item.warehouse = request.form['warehouse']
        
         db.session.add(item)
         db.session.commit()
