@@ -1,3 +1,4 @@
+""" seed database """
 from models import db
 from app import app
 

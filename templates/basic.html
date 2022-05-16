@@ -11,10 +11,11 @@
     {% for msg in get_flashed_messages() %}
         <p>{{ msg }}</p>
     {% endfor %}
-    <ul>
+    <ul class = "navbar">
         <li><a href = "/items"> item list</a></li>
         <li><a href = "/">create item</a></li>
         <li><a href = "/create-warehouse">create warehouse</a></li>
+        <li><a href = "/warehouses"> warehouse list</a></li>
     </ul>
     {% block content %}
 

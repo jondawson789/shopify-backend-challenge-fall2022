@@ -1,0 +1,23 @@
+
+{% extends 'basic.html' %}
+
+{% block content %}
+
+<h1>List of Warehouses</h1>
+
+<table id = "warehouses">
+    <tr>
+        <th>warehouse name</th>
+        <th>warehouse details</th>
+     
+    </tr>
+{% for warehouse in warehouses %}
+    <tr>
+        <td>{{warehouse.name}}</td>
+        <td><a href = "/warehouse/{{warehouse.id}}"> warehouse's inventory</a></td>
+
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

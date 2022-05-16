@@ -12,14 +12,17 @@ class Item(db.Model):
     id = db.Column(db.Integer, nullable=False, primary_key=True)
     name = db.Column(db.Text)
     description = db.Column(db.Text)
-    warehouse = db.Column(db.Text, db.ForeignKey('warehouses.name'))
+    warehouse_id = db.Column(db.Integer, db.ForeignKey('warehouses.id'))
+
+    warehouse = db.relationship('Warehouse', backref='items')
 
 class Warehouse(db.Model):
     """model for warehouse"""
 
     __tablename__ = "warehouses"
 
-    name = db.Column(db.Text, nullable=False, primary_key=True)
+    id = db.Column(db.Integer, nullable=False, primary_key=True)
+    name = db.Column(db.Text, nullable=False, unique=True)
    
 def connect_db(app):
     """Connect to database."""

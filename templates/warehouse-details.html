@@ -3,9 +3,9 @@
 
 {% block content %}
 
-<h1>List of Items</h1>
+<h1>{{warehouse.name}} Inventory</h1>
 
-<table id = "items">
+<table id = "warehouse-items">
     <tr>
         <th>item id</th>
         <th>item name</th>
@@ -13,7 +13,7 @@
         <th>item details</th>
      
     </tr>
-{% for item in items %}
+{% for item in warehouse_items %}
     <tr>
         <td>{{item.id}}</td>
         <td>{{item.name}}</td>
