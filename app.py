@@ -81,7 +81,7 @@ def item_update(item_id):
         db.session.add(item)
         db.session.commit()
     except:
-        flash('duplicate id or no id entered')
+        flash('duplicate or invalid id entered')
         return redirect(f'/item/{item_id}/edit')
 
     return redirect('/items')
