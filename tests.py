@@ -10,6 +10,7 @@ class FlaskTests(TestCase):
     ###############################################################
     #testing create warehouse and list warehouses
     def test_warehouse_form(self):
+        """ test if create warehouse page renders """
         with app.test_client() as client:
             resp = client.get("/create-warehouse")
             html = resp.get_data(as_text=True)
@@ -19,6 +20,7 @@ class FlaskTests(TestCase):
 
     def test_create_warehouse(self):
         with app.test_client() as client:
+            """ test posting new warehouse data to route """
             resp = client.post("/create-warehouse", data={'warehouse': 'warehouse B'})
 
             self.assertEqual(resp.status_code, 302)
@@ -26,6 +28,7 @@ class FlaskTests(TestCase):
 
     def test_create_warehouse_error(self):
         with app.test_client() as client:
+            """ test when new warehouse data throws error """
             resp = client.post("/create-warehouse", data={'warehouse': 'warehouse B'})
             
 
@@ -34,6 +37,7 @@ class FlaskTests(TestCase):
 
     def test_warehouse_list(self):
         with app.test_client() as client:
+            """ test if warehouse list page renders """
             resp = client.get('/warehouses')
             html = resp.get_data(as_text=True)
 
@@ -44,6 +48,7 @@ class FlaskTests(TestCase):
     #testing create and list items
     def test_base_route(self):
         with app.test_client() as client:
+            """ test if create item page renders """
             resp = client.get('/')
             html = resp.get_data(as_text=True)
 
@@ -52,6 +57,7 @@ class FlaskTests(TestCase):
 
     def test_items_route(self):
         with app.test_client() as client:
+            """ test items list page renders """
             resp = client.get('/items')
             html = resp.get_data(as_text=True)
 
@@ -60,6 +66,7 @@ class FlaskTests(TestCase):
     
     def test_create_item_error(self):
         with app.test_client() as client:
+            """ test when create item page throws error """
             resp = client.post('/items',
                            data={'id': 'adsfadsfasd',
                                  'name': 'cookie',
@@ -73,6 +80,7 @@ class FlaskTests(TestCase):
 
     def test_create_item(self):
         with app.test_client() as client:
+            """ test posting new item to route """
             resp = client.post('/items',
                            data={'id': '4',
                                  'name': 'cookie',
@@ -83,6 +91,7 @@ class FlaskTests(TestCase):
 
 
     def test_redirection_create_item(self):
+        """ test if redirection to see if new item was added to items list """
         with app.test_client() as client:
             resp = client.get("/items", follow_redirects=True)
             html = resp.get_data(as_text=True)
@@ -94,6 +103,7 @@ class FlaskTests(TestCase):
     #testing item details and item edit
     def test_item_details(self):
         with app.test_client() as client:
+            """ test if item detail page renders """
             resp = client.get("/item/4")
             html = resp.get_data(as_text=True)
 
@@ -102,6 +112,7 @@ class FlaskTests(TestCase):
 
     def test_edit_item_error(self):
         with app.test_client() as client:
+            """ test when edit item throws error  """
             resp = client.post('/item/4/edit',
                            data={'id': '',
                                  'name': 'cookie',
@@ -114,6 +125,7 @@ class FlaskTests(TestCase):
         
     def test_edit_item(self):
         with app.test_client() as client:
+            """ test posting data to edit item page """
             resp = client.post("/item/4/edit", data={'id': '4',
                                  'name': 'cookie',
                                  'description': 'new description'})
@@ -122,6 +134,7 @@ class FlaskTests(TestCase):
             self.assertEqual(resp.location, "/items")
 
     def test_redirection_edit_item(self):
+        """ test if description was changed to item """
         with app.test_client() as client:
             resp = client.get("/items", follow_redirects=True)
             html = resp.get_data(as_text=True)
@@ -133,6 +146,7 @@ class FlaskTests(TestCase):
     #testing assign routes
     def test_assign_form(self):
         with app.test_client() as client:
+            """ test if assign item page renders """
             resp = client.post("/items", data={'id': '5',
                                  'name': 'chocolate',
                                  'description': 'new description'})
@@ -144,6 +158,7 @@ class FlaskTests(TestCase):
 
     def test_assign_item(self):
         with app.test_client() as client:
+            """ test assigning item to warehouse """
             resp = client.post("/create-warehouse", data={'warehouse': 'warehouse A'})
             resp = client.post("/item/5/assign", data={'warehouse': 'warehouse A'})
             
@@ -152,6 +167,7 @@ class FlaskTests(TestCase):
 
     def test_assign_item_error(self):
         with app.test_client() as client:
+            """ test when assigning item throws error """
             resp = client.post("/item/5/assign", data={})
             
             self.assertEqual(resp.status_code, 302)
@@ -161,6 +177,7 @@ class FlaskTests(TestCase):
     #testing warehouse inventory route
     def test_warehouse_inventory(self):
         with app.test_client() as client:
+            """ test if warehouse inventory page renders """
             resp = client.get("/warehouse/1")
             html = resp.get_data(as_text=True)
             
