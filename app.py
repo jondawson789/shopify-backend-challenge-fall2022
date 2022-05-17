@@ -36,7 +36,7 @@ def create_item():
         db.session.add(new_item)
         db.session.commit()
     except:
-        flash("item id is required or duplicate id entered")
+        flash("duplicate or invalid id entered")
         return redirect('/')
 
     return redirect('/items')
