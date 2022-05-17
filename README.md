@@ -8,3 +8,5 @@ The items page will list the id, name, and desription of each item. Clicking on 
 
 Clicking on the create warehouse hyperlink will render a create warehouse form. The user can enter any unique string such as warehouse name or location to create a warehouse, but the user can't submit an empty string. After create a warehouse, the user can view a list of all warehouses by clicking the warehouse list hyperlink. The user can click on the warehouse's inventory hyperlink to view a list of all the inventory assigned to that warehouse. There are also two other hyperlinks: a create item hyperlink to render the create item form, and a item list hyperlink to list all inventory items. 
 
+The app is deployed on heroku: https://fall2022-inventory-app.herokuapp.com/items
+
